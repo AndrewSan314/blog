@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../advcbv/.idea/advcbv.iml" filepath="$PROJECT_DIR$/../../advcbv/.idea/advcbv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/clone_project.iml" filepath="$PROJECT_DIR$/.idea/clone_project.iml" />
+    </modules>
+  </component>
+</project>

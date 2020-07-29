@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body_block %}
 
-</body>
-</html>
+    <h1 class="posttitle">{{ post.title }}</h1>
+    {% if post.publish_date %}
+        <div></div>
+        {{ post.publish_date }}
+    {% else %}
+        <a class="btn btn-default" href="{% url 'post_publish' %}">Publish</a>
+    {% endif %}
+    <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
+    {% if user.authenticated %}
+        <a class="btn btn-primary" href="{% url 'post_edit' %}"><i class='far fa-edit'></i></a>
+        <a class="btn btn-primary" href="{% url 'post_remove' %}"><i class='far fa-remove'></i></a>
+    {% endif %}
+    <hr>
+    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
+
+    <div class="container">
+        {% for comment in post.comments.all %}
+            <br>
+            {% if user.is_authenticated or comment.approve_comment %}
+                {{ comment.create_date }}
+                {% if not comment.approve_comment %}
+                    <a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><i
+                            class='far fa-ok'></i></a>
+                    <a class="btn btn-primary" href="{% url 'comment_remove' pk=comment.pk %}"><i
+                            class='far fa-remove'></i></a>
+                {% endif %}
+                <p>{{ comment.text|safe|linebreaksbr }}</p>
+                <p>Posted by:{{ comment.author }}</p>
+
+            {% endif %}
+
+        {% empty %}
+            <P>No comments posted</P>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

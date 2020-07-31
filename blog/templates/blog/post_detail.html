@@ -3,37 +3,39 @@
 
     <h1 class="posttitle">{{ post.title }}</h1>
     {% if post.publish_date %}
-        <div></div>
         {{ post.publish_date }}
+
+
     {% else %}
-        <a class="btn btn-default" href="{% url 'post_publish' %}">Publish</a>
+        <a class="btn btn-outline-dark" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
     {% endif %}
     <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
-    {% if user.authenticated %}
-        <a class="btn btn-primary" href="{% url 'post_edit' %}"><i class='far fa-edit'></i></a>
-        <a class="btn btn-primary" href="{% url 'post_remove' %}"><i class='far fa-remove'></i></a>
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><i class='far fa-edit'></i></a>
+        <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"><span class="fa fa-remove"></span></a>
     {% endif %}
-    <hr>
-    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
 
+
+    <hr>
+    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
     <div class="container">
         {% for comment in post.comments.all %}
             <br>
             {% if user.is_authenticated or comment.approve_comment %}
                 {{ comment.create_date }}
                 {% if not comment.approve_comment %}
-                    <a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><i
-                            class='far fa-ok'></i></a>
-                    <a class="btn btn-primary" href="{% url 'comment_remove' pk=comment.pk %}"><i
-                            class='far fa-remove'></i></a>
+                    <a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><span
+                            class='fa fa-check'></span></a>
+                    <a class="btn btn-primary" href="{% url 'comment_remove' pk=comment.pk %}"><span
+                            class="fa fa-remove"></span></a>
                 {% endif %}
                 <p>{{ comment.text|safe|linebreaksbr }}</p>
-                <p>Posted by:{{ comment.author }}</p>
+                <p>Posted by:<strong>{{ comment.author }}</strong></p>
 
             {% endif %}
-
         {% empty %}
-            <P>No comments posted</P>
+
+            <p>No comments posted</p>
 
         {% endfor %}
 

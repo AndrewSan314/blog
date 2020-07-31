@@ -19,6 +19,7 @@
     <orderEntry type="jdk" jdkName="Python 3.7 (graphic user)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="advcbv" />
+    <orderEntry type="module" module-name="shopping" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

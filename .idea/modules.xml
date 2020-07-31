@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../../advcbv/.idea/advcbv.iml" filepath="$PROJECT_DIR$/../../advcbv/.idea/advcbv.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/clone_project.iml" filepath="$PROJECT_DIR$/.idea/clone_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DJANGO/shopping/.idea/shopping.iml" filepath="$PROJECT_DIR$/../DJANGO/shopping/.idea/shopping.iml" />
     </modules>
   </component>
 </project>

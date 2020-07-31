@@ -35,14 +35,20 @@
     <script>
         $(document).ready(function () {
 //Preloader
-            preloaderFadeOutTime = 2500;
+            preloaderFadeOutTime = 2200;
 
-            function hidePreloader() {
+            function Preloader() {
+
                 var preloader = $('.wrapper');
-                preloader.fadeOut(preloaderFadeOutTime);
+                preloader.delay(500).fadeOut(500);
             }
 
-            hidePreloader();
+            if (!sessionStorage.getItem('doNotShow')) {
+                sessionStorage.setItem('doNotShow', true);
+                Preloader();
+            } else {
+                $(' .wrapper').hide();
+            }
         });
     </script>
 {% endblock %}

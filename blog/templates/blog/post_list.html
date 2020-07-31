@@ -16,4 +16,33 @@
     </div>
 
 {% endblock %}
+{% block loader %}
+    <div class="wrapper">
+        <div class="loader">
+            <div class="hexagon-container">
+                <span class="hexagon hex_1"></span>
+                <span class="hexagon hex_2"></span>
+                <span class="hexagon hex_3"></span>
+                <span class="hexagon hex_4"></span>
+                <span class="hexagon hex_5"></span>
+                <span class="hexagon hex_6"></span>
+                <span class="hexagon hex_7"></span>
+            </div>
+        </div>
+    </div>
 
+
+    <script>
+        $(document).ready(function () {
+//Preloader
+            preloaderFadeOutTime = 2500;
+
+            function hidePreloader() {
+                var preloader = $('.wrapper');
+                preloader.fadeOut(preloaderFadeOutTime);
+            }
+
+            hidePreloader();
+        });
+    </script>
+{% endblock %}
